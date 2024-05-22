@@ -1,4 +1,4 @@
-
+import ListProjects from "./ListProjects";
 
 export default function SideBar({ onAdd }) {
   return (
@@ -13,6 +13,7 @@ export default function SideBar({ onAdd }) {
         <span className="pr-2">+</span>Add Project
       </button>
       <ul>
+        <ListProjects />
       </ul>
     </aside>
   );
