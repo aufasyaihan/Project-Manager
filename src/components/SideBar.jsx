@@ -8,7 +8,7 @@ export default function SideBar({ onAdd }) {
       </h1>
       <button
         onClick={onAdd}
-        className="mt-10 px-3 py-2 bg-stone-700 rounded-md text-stone-300 hover:text-stone-400 hover:bg-stone-600"
+        className="mt-10 px-3 py-2 bg-stone-700 rounded-md text-stone-300 hover:text-stone-200 hover:bg-stone-600"
       >
         <span className="pr-2">+</span>Add Project
       </button>
