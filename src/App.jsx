@@ -2,6 +2,7 @@ import { useState } from "react";
 import Content from "./components/Content";
 import SideBar from "./components/SideBar";
 import CreateProject from "./components/CreateProject";
+import ListProjects from "./components/ListProjects";
 
 function App() {
   const [isAdd, setIsAdd] = useState(false);
@@ -38,7 +39,9 @@ function App() {
   console.log(projects);
   return (
     <main className="flex h-screen gap-5">
-      <SideBar onAdd={handleAdd} />
+      <SideBar onAdd={handleAdd}>
+        {projects.length > 0 && <ListProjects projects={projects} />}
+      </SideBar>
       {isAdd ? (
         <CreateProject
           onCancel={handleCancel}
