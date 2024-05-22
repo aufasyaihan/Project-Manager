@@ -24,7 +24,7 @@ export default function CreateProject({ onCancel, onAddProjects }) {
       onAddProjects({
         title: titleInput,
         description: descInput,
-        date: dueDateInput,
+        dueDate: dueDateInput,
       });
     }
   }

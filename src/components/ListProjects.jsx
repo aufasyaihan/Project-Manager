@@ -1,11 +1,10 @@
-export default function ListProjects({ title, onClickProject }) {
-  function handleClick() {
-    onClickProject();
-  }
-
+export default function ListProjects({ title, onSelectedProject, ...props}) {
   return (
-    <li className=" rounded text-stone-300 hover:bg-stone-700">
-      <button className="w-full h-full p-2 text-start" onClick={handleClick}>
+    <li {...props}>
+      <button
+        className="w-full h-full p-2 text-start"
+        onClick={onSelectedProject}
+      >
         {title}
       </button>
     </li>
