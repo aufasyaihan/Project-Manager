@@ -7,14 +7,22 @@ export default function CreateProject({ onCancel, onAddProjects }) {
   const date = useRef();
 
   function handleSave() {
-    onAddProjects(
-      "title",
-      "desc",
-      "date",
-      title.current.value,
-      desc.current.value,
-      date.current.value
-    );
+    if (
+      !(
+        title.current.value === "" ||
+        desc.current.value === "" ||
+        date.current.value === ""
+      )
+    ) {
+      onAddProjects(
+        "title",
+        "desc",
+        "date",
+        title.current.value,
+        desc.current.value,
+        date.current.value
+      );
+    } else alert("Please fill all the fields");
   }
 
   return (

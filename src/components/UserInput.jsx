@@ -16,6 +16,7 @@ const UserInput = forwardRef(function UserInput({ label, type }, ref) {
           name={label}
           id={label}
           ref={ref}
+          required
         ></textarea>
       ) : (
         <input
@@ -24,6 +25,7 @@ const UserInput = forwardRef(function UserInput({ label, type }, ref) {
           name={label}
           id={label}
           ref={ref}
+          required
         />
       )}
     </div>
