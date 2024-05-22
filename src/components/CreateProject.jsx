@@ -40,8 +40,8 @@ export default function CreateProject({ onCancel, onAddProjects }) {
           </button>
         </div>
         <UserInput ref={title} type="text" label="title" />
-        <UserInput ref={desc} type="textarea" label="description" />
-        <UserInput ref={date} type="date" label="date" />
+        <UserInput ref={desc} textarea label="description" />
+        <UserInput ref={date} type="date"  label="date" />
       </div>
     </main>
   );

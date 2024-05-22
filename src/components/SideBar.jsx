@@ -1,20 +1,16 @@
+import Button from "./Button";
 import ListProjects from "./ListProjects";
 
-export default function SideBar({ onAdd, children}) {
+export default function SideBar({ onAdd, children }) {
   return (
     <aside className="mt-5 bg-stone-900 text-gray-50 py-14 pl-8 pr-16 rounded-se-3xl ">
       <h1 className="text-xl text-start uppercase font-bold md:text-3xl">
         Your Project
       </h1>
-      <button
-        onClick={onAdd}
-        className="mt-10 px-3 py-2 bg-stone-700 rounded-md text-stone-300 hover:text-stone-200 hover:bg-stone-600"
-      >
-        <span className="pr-2">+</span>Add Project
-      </button>
-      <ul className="mt-8 flex flex-col gap-3">
-        {children}
-      </ul>
+      <div className="mt-8">
+        <Button onClick={onAdd}>+Add Project</Button>
+      </div>
+      <ul className="mt-8 flex flex-col gap-3">{children}</ul>
     </aside>
   );
 }
