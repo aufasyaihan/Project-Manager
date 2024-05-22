@@ -29,7 +29,8 @@ function App() {
         {
           [title]: titleValue,
           [desc]: descValue,
-          [date]: new Date(dateValue).toDateString(),
+          [date]: dateValue,
+          // [date]: new Date(dateValue).toDateString(),
         },
       ];
     });
