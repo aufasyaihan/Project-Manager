@@ -11,7 +11,7 @@ const Modal = forwardRef(function Modal({ children }, ref) {
         }
     }))
   return createPortal(
-    <dialog ref={dialog}>{children}</dialog>,
+    <dialog className="rounded backdrop:backdrop-blur-sm h-1/3 w-1/2" ref={dialog}>{children}</dialog>,
     document.getElementById("modal-root")
   );
 })
