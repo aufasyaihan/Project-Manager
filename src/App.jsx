@@ -29,12 +29,12 @@ function App() {
         {
           [title]: titleValue,
           [desc]: descValue,
-          [date]: dateValue,
+          [date]: new Date(dateValue).toDateString(),
         },
       ];
     });
   }
-  
+  console.log(projects);
   return (
     <main className="flex h-screen gap-5">
       <SideBar onAdd={handleAdd} />
