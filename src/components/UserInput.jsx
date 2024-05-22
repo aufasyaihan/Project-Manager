@@ -16,8 +16,6 @@ const UserInput = forwardRef(function UserInput(
       {textarea ? (
         <textarea
           className={style}
-          name={label}
-          id={label}
           ref={ref}
           required
           {...props}
@@ -25,8 +23,6 @@ const UserInput = forwardRef(function UserInput(
       ) : (
         <input
           className={style}
-          name={label}
-          id={label}
           ref={ref}
           required
           {...props}

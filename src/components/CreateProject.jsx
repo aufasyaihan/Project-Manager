@@ -4,24 +4,18 @@ import UserInput from "./UserInput";
 export default function CreateProject({ onCancel, onAddProjects }) {
   const title = useRef();
   const desc = useRef();
-  const date = useRef();
+  const dueDate = useRef();
 
   function handleSave() {
-    if (
-      !(
-        title.current.value === "" ||
-        desc.current.value === "" ||
-        date.current.value === ""
-      )
-    ) {
-      onAddProjects(
-        "title",
-        "desc",
-        "date",
-        title.current.value,
-        desc.current.value,
-        date.current.value
-      );
+    const titleInput = title.current.value;
+    const descInput = desc.current.value;
+    const dueDateInput = dueDate.current.value;
+    if (!(titleInput === "" || descInput === "" || dueDateInput === "")) {
+      onAddProjects({
+        title: titleInput,
+        description: descInput,
+        date: dueDateInput,
+      });
     } else alert("Please fill all the fields");
   }
 
@@ -41,7 +35,7 @@ export default function CreateProject({ onCancel, onAddProjects }) {
         </div>
         <UserInput ref={title} type="text" label="title" />
         <UserInput ref={desc} textarea label="description" />
-        <UserInput ref={date} type="date"  label="date" />
+        <UserInput ref={dueDate} type="date" label="Due date" />
       </div>
     </main>
   );

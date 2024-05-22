@@ -1,7 +1,7 @@
 import image from "../assets/no-projects.png";
 import Button from "./Button";
 
-export default function Content({ onAdd }) {
+export default function HomeContent({ onStartAddProject }) {
   return (
     <main className="mx-auto my-auto flex flex-col gap-4 text-center">
       <img className="w-20 mx-auto" src={image} alt="project" />
@@ -12,7 +12,7 @@ export default function Content({ onAdd }) {
         Select a project or get started with a new one
       </p>
       <div>
-        <Button onClick={onAdd}>Create New Project</Button>
+        <Button onClick={onStartAddProject}>Create New Project</Button>
       </div>
     </main>
   );

@@ -1,55 +1,69 @@
 import { useState } from "react";
-import Content from "./components/Content";
+import HomeContent from "./components/HomeContent";
 import SideBar from "./components/SideBar";
 import CreateProject from "./components/CreateProject";
 import ListProjects from "./components/ListProjects";
 import Projects from "./components/Projects";
 
 function App() {
-  const [isAdd, setIsAdd] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const [projectState, setProjectState] = useState({
+    selectedProjectId: undefined,
+    projects: [],
+  });
   const [isProjectExist, setIsProjectExist] = useState(false);
 
-  function handleAdd() {
-    setIsAdd(true);
+  function handleStartAddProject() {
+    setProjectState((prevProjectState) => {
+      return { ...prevProjectState, selectedProjectId: null };
+    });
   }
 
   function handleCancel() {
-    setIsAdd(false);
+    setProjectState((prevProjectState) => {
+      return { ...prevProjectState, selectedProjectId: undefined };
+    });
     setIsProjectExist(false);
   }
 
-  function handleAddProjects(
-    title,
-    desc,
-    date,
-    titleValue,
-    descValue,
-    dateValue
-  ) {
-    setProjects((prevProjects) => {
-      return [
+  function handleAddProjects(projectData) {
+    setProjectState((prevProjects) => {
+      const projectID = +new Date();
+      const newProject = {
+        ...projectData,
+        id: projectID,
+      };
+      return {
         ...prevProjects,
-        {
-          [title]: titleValue,
-          [desc]: descValue,
-          [date]: dateValue,
-          // [date]: new Date(dateValue).toDateString(),
-        },
-      ];
+        selectedProjectId: undefined,
+        // selectedProjectId : projectID,
+        projects: [...prevProjects.projects, newProject],
+      };
     });
-    setIsAdd(false);
+  }
+
+  let content;
+
+  if (projectState.selectedProjectId === null) {
+    content = (
+      <CreateProject
+        onCancel={handleCancel}
+        onAddProjects={handleAddProjects}
+      />
+    );
+  } else if (projectState.selectedProjectId === undefined) {
+    content = <HomeContent onStartAddProject={handleStartAddProject} />;
   }
 
   function handleProject() {
     setIsProjectExist(true);
   }
-  console.log(isProjectExist);
+
+  console.log(projectState);
   return (
     <main className="flex h-screen gap-5">
-      <SideBar onAdd={handleAdd}>
-        {projects.length > 0 &&
-          projects.map((project, index) => (
+      <SideBar onStartAddProject={handleStartAddProject}>
+        {projectState.projects.length > 0 &&
+          projectState.projects.map((project, index) => (
             <ListProjects
               key={index}
               title={project.title}
@@ -57,7 +71,7 @@ function App() {
             />
           ))}
       </SideBar>
-      {isAdd ? (
+      {/* {isAdd ? (
         <CreateProject
           onCancel={handleCancel}
           onAddProjects={handleAddProjects}
@@ -65,8 +79,10 @@ function App() {
       ) : isProjectExist ? (
         <Projects projects={projects} />
       ) : (
-        <Content onAdd={handleAdd} />
-      )}
+        <Content onStartAddProject={handleStartAddProject} />
+      )} */}
+
+      {content}
     </main>
   );
 }
