@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import UserInput from "./UserInput";
 import Modal from "./Modal";
+import Button from "./Button";
 
 export default function CreateProject({ onCancel, onAddProjects }) {
   const title = useRef();
@@ -33,15 +34,13 @@ export default function CreateProject({ onCancel, onAddProjects }) {
       <Modal ref={modal}>
         <div className="h-full p-4 flex flex-col justify-between">
           <div className="flex flex-col justify-between ">
-            <h1 className="text-3xl font-bold text-red-600 py-2 text-start">
+            <h1 className="text-3xl font-bold text-stone-700 py-2 text-start">
               Invalid Input
             </h1>
-            <p className="mt-2">Please enter all the input</p>
+            <p className="mt-2 text-stone-900">Please enter all the input</p>
           </div>
-          <form method="dialog" className="flex justify-end">
-            <button className="mt-3 bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">
-              Back
-            </button>
+          <form method="dialog" className="text-right">
+            <Button>Okay</Button>
           </form>
         </div>
       </Modal>
