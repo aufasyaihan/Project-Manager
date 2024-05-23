@@ -4,11 +4,13 @@ import SideBar from "./components/SideBar";
 import CreateProject from "./components/CreateProject";
 import ListProjects from "./components/ListProjects";
 import SelectedProjects from "./components/SelectedProjects";
+import Task from "./components/Task";
 
 function App() {
   const [projectState, setProjectState] = useState({
     selectedProjectId: undefined,
     projects: [],
+    tasks: [],
   });
 
   function handleStartAddProject() {
@@ -48,7 +50,50 @@ function App() {
     (project) => project.id === projectState.selectedProjectId
   );
 
-  let content = <SelectedProjects project={selectedProject} />;
+  function handleDelete() {
+    setProjectState((prevProjectState) => {
+      return {
+        ...prevProjectState,
+        selectedProjectId: undefined,
+        projects: prevProjectState.projects.filter(
+          (project) => project.id !== projectState.selectedProjectId
+        ),
+      };
+    });
+  }
+  function handleAddTask(text) {
+    setProjectState((prevState) => {
+      const taskId = +new Date();
+      const newTask = {
+        text: text,
+        projectId: prevState.selectedProjectId,
+        id: taskId,
+      };
+      return {
+        ...prevState,
+        tasks: [newTask, ...prevState.tasks],
+      };
+    });
+  }
+
+  function handleDeleteTask(id) {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  }
+
+  let content = (
+    <SelectedProjects project={selectedProject} onDelete={handleDelete}>
+      <Task
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        tasks={projectState.tasks}
+      />
+    </SelectedProjects>
+  );
 
   if (projectState.selectedProjectId === null) {
     content = (
@@ -60,7 +105,6 @@ function App() {
   } else if (projectState.selectedProjectId === undefined) {
     content = <HomeContent onStartAddProject={handleStartAddProject} />;
   }
-
   console.log(projectState);
   return (
     <main className="flex h-screen gap-5">
