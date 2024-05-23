@@ -1,9 +1,4 @@
-import { useState } from "react";
-import Task from "./Task";
-
 export default function Projects({ project, onDelete, children }) {
-
-  function handleAddTask() {}
   const formattedDate = new Date(project.dueDate).toDateString();
   return (
     <main className="flex flex-col mx-8 my-auto h-3/4 w-3/5 p-5">

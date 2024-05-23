@@ -2,7 +2,6 @@ import { useState } from "react";
 import HomeContent from "./components/HomeContent";
 import SideBar from "./components/SideBar";
 import CreateProject from "./components/CreateProject";
-import ListProjects from "./components/ListProjects";
 import SelectedProjects from "./components/SelectedProjects";
 import Task from "./components/Task";
 
