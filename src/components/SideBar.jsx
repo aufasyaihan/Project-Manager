@@ -17,7 +17,7 @@ export default function SideBar({
       </div>
       <ul className="mt-8 flex flex-col gap-3">
         {projects.map((project) => {
-          const style = "rounded text-stone-300 hover:bg-stone-700";
+          let style = "rounded text-stone-300 hover:bg-stone-700";
           if (project.id === selectedProjectId) {
             style += " bg-stone-700";
           }

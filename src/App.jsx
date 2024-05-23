@@ -105,13 +105,13 @@ function App() {
   } else if (projectState.selectedProjectId === undefined) {
     content = <HomeContent onStartAddProject={handleStartAddProject} />;
   }
-  console.log(projectState);
   return (
     <main className="flex h-screen gap-5">
       <SideBar
         onStartAddProject={handleStartAddProject}
         projects={projectState.projects}
         onSelectedProject={handleSelectedProject}
+        selectedProjectId={projectState.selectedProjectId}
       />
       {content}
     </main>
