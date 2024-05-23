@@ -85,12 +85,16 @@ function App() {
     });
   }
 
+  const filteredTasks = projectState.tasks.filter(
+    (task) => task.projectId === projectState.selectedProjectId
+  );
+
   let content = (
     <SelectedProjects project={selectedProject} onDelete={handleDelete}>
       <Task
         onAddTask={handleAddTask}
         onDeleteTask={handleDeleteTask}
-        tasks={projectState.tasks}
+        tasks={filteredTasks}
       />
     </SelectedProjects>
   );
