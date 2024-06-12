@@ -10,7 +10,7 @@
 git init
 git clone https://github.com/aufasyaihan/Project-Manager.git
 ```
-### Instal modules
+### Install modules
 ```
 npm install
 ```
